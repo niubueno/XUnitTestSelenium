@@ -8,7 +8,7 @@ namespace XUnitTestSelenium
     public class FirstTests
     {
         [Fact]
-        public void Test1()
+        public void TestStackOverFlowSearch()
         {
             //arrange
             IWebDriver driver = new ChromeDriver();
