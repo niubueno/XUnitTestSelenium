@@ -11,7 +11,8 @@ namespace XUnitTestSelenium
         public void TestStackOverFlowSearch()
         {
             //arrange
-            IWebDriver driver = new ChromeDriver();
+            IWebDriver driver = new ChromeDriver(); //driver creation
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10); //add more timeout to find an element when some page take slow to load
             try
             {
                 //act
@@ -25,19 +26,21 @@ namespace XUnitTestSelenium
 
                 //assert
                 Assert.NotNull(link);
-
-                //finalize test
-                TeardownTest(driver);
             }
             catch (Exception)
             {
-                TeardownTest(driver);
                 throw;
+            }
+            finally
+            {
+                //finalize test
+                TeardownTest(driver);
             }
            
         }
 
-        public void TeardownTest(IWebDriver pDriver)
+        
+        private void TeardownTest(IWebDriver pDriver)
         {
             try
             {
